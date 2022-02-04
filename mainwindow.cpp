@@ -11,8 +11,10 @@ MainWindow::MainWindow(QWidget* parent)
 
     ui->dateCurrent->setDate(QDate::currentDate());
     ui->dateBirthday->setDate(QDate(1985, 4, 24));
-
     calculateAge();
+
+    connect(ui->dateBirthday, SIGNAL(userDateChanged(QDate)), this, SLOT(calculateAge()));
+    connect(ui->dateCurrent, SIGNAL(userDateChanged(QDate)), this, SLOT(calculateAge()));
 }
 
 MainWindow::~MainWindow()
@@ -30,16 +32,6 @@ void MainWindow::calculateAge()
         age--;
 
     ui->lblText->setText(QString("The person is %1 years old.").arg(age));
-}
-
-void MainWindow::on_dateBirthday_dateChanged(const QDate& date)
-{
-    calculateAge();
-}
-
-void MainWindow::on_dateCurrent_dateChanged(const QDate& date)
-{
-    calculateAge();
 }
 
 void MainWindow::on_btnInfo_clicked()

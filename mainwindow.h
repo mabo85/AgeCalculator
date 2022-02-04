@@ -18,13 +18,9 @@ class MainWindow : public QMainWindow
     MainWindow(QWidget* parent = nullptr);
     ~MainWindow();
 
-  protected:
-    void calculateAge();
-
   private slots:
     void on_btnInfo_clicked();
-    void on_dateBirthday_dateChanged(const QDate& date);
-    void on_dateCurrent_dateChanged(const QDate& date);
+    void calculateAge();
 
   private:
     Ui::MainWindow* ui;
