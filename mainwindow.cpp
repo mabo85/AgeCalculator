@@ -13,8 +13,8 @@ MainWindow::MainWindow(QWidget* parent)
     ui->dateBirthday->setDate(QDate(1985, 4, 24));
     calculateAge();
 
-    connect(ui->dateBirthday, SIGNAL(userDateChanged(QDate)), this, SLOT(calculateAge()));
-    connect(ui->dateCurrent, SIGNAL(userDateChanged(QDate)), this, SLOT(calculateAge()));
+    connect(ui->dateBirthday, &QDateEdit::userDateChanged, this, &MainWindow::calculateAge);
+    connect(ui->dateCurrent, &QDateEdit::userDateChanged, this, &MainWindow::calculateAge);
 }
 
 MainWindow::~MainWindow()
